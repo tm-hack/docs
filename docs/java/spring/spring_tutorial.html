@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="ja" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TERASOLUNA Server Framework &mdash; tm-hack  ドキュメント</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="Book Report" href="../../report/book/index.html" />
+    <link rel="prev" title="Spring" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> tm-hack
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Java</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Spring</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">TERASOLUNA Server Framework</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">前提事項</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">TERASOLUNA Server Frameworkの概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spirng-mvc">Spirng MVCのアーキテクチャ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#o-r-mapper">O/R Mapper</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">参考文献</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../report/book/index.html">Book Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../report/seminar/index.html">Seminar Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workplace/tools/index.html">ツール類に関するメモ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">tm-hack</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Java</a> &raquo;</li>
+          <li><a href="index.html">Spring</a> &raquo;</li>
+      <li>TERASOLUNA Server Framework</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/java/spring/spring_tutorial.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="terasoluna-server-framework">
+<h1>TERASOLUNA Server Framework<a class="headerlink" href="#terasoluna-server-framework" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>本章ではTERASOLUNA Server Frameworkのチュートリアルを実施時の内容をまとめる。</p>
+<div class="section" id="id1">
+<h2>前提事項<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>検証環境は以下の通りである。</p>
+<ul class="simple">
+<li>Windows11</li>
+<li>JDK 17.0.2</li>
+<li>apache-tomcat 9.0.55</li>
+</ul>
+<p>また、本ページで掲載している図については <a class="reference external" href="http://terasolunaorg.github.io/guideline/current/ja/index.html">TERASOLUNA Server Framework</a> から引用している。</p>
+</div>
+<div class="section" id="id3">
+<h2>TERASOLUNA Server Frameworkの概要<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>TERASOLUNA Server Frameworkは独自のフレームワークではなく、SpringFrameworkを中心としたOSSの組み合わせである。
+ライブラリ構成を以下の図に示す。</p>
+<img alt="http://terasolunaorg.github.io/guideline/current/ja/_images/introduction-software-stack.png" src="http://terasolunaorg.github.io/guideline/current/ja/_images/introduction-software-stack.png" />
+</div>
+<div class="section" id="spirng-mvc">
+<h2>Spirng MVCのアーキテクチャ<a class="headerlink" href="#spirng-mvc" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>リクエストを受けてからレスポンスを返すまでのSpringMVCの処理フローを以下の図に示す。</p>
+<img alt="http://terasolunaorg.github.io/guideline/current/ja/_images/RequestLifecycle.png" src="http://terasolunaorg.github.io/guideline/current/ja/_images/RequestLifecycle.png" />
+</div>
+<div class="section" id="o-r-mapper">
+<h2>O/R Mapper<a class="headerlink" href="#o-r-mapper" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>O/R Mapperはオブジェクト指向言語で書かれたアプリケーションと非オブジェクト指向であるデータベースやSQLの間インピーダンスミスマッチを解消させるためのフレームワークである。
+TERASOLUNA Server Frameworkでは、O/R Mapperとして以下のいずれかを想定している。</p>
+<ul class="simple">
+<li>JPA（Java Persistance API）</li>
+<li>MyBatis</li>
+</ul>
+<div class="section" id="jpa-java-persistance-api">
+<h3>JPA（Java Persistance API）<a class="headerlink" href="#jpa-java-persistance-api" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li>Domainに&#64;Entity等のアノテーションを付与することで設定する</li>
+<li>CRUDに関わる基本的なメソッドがEntityManagerから提供されるため、冗長なSQLの記載が不要になる</li>
+<li>独自のクエリを発行する際は、SQLライクな独自のクエリ言語であるJPQL（Java Persistance Query Language）を使用する</li>
+</ul>
+<p>以下にDomainの実装例を示す。</p>
+<div class="highlight-java notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">com.example.todo.domain.model</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.Column</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.Entity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.Id</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.Table</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.Temporal</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.TemporalType</span><span class="o">;</span>
+
+<span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;todo&quot;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Todo</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
+
+    <span class="nd">@Id</span>
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;todo_id&quot;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">todoId</span><span class="o">;</span>
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;todo_title&quot;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">todoTitle</span><span class="o">;</span>
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;finished&quot;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">finished</span><span class="o">;</span>
+
+    <span class="nd">@Temporal</span><span class="o">(</span><span class="n">TemporalType</span><span class="o">.</span><span class="na">TIMESTAMP</span><span class="o">)</span>
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;created_at&quot;</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="n">Date</span> <span class="n">createdAt</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getTodoId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">todoId</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTodoId</span><span class="o">(</span><span class="n">String</span> <span class="n">todoId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">todoId</span> <span class="o">=</span> <span class="n">todoId</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getTodoTitle</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">todoTitle</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTodoTitle</span><span class="o">(</span><span class="n">String</span> <span class="n">todoTitle</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">todoTitle</span> <span class="o">=</span> <span class="n">todoTitle</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isFinished</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">finished</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setFinished</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">finished</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">finished</span> <span class="o">=</span> <span class="n">finished</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="n">Date</span> <span class="nf">getCreatedAt</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">createdAt</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCreatedAt</span><span class="o">(</span><span class="n">Date</span> <span class="n">createdAt</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">createdAt</span> <span class="o">=</span> <span class="n">createdAt</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+<p>以下にRepositoryの実装例を示す。
+なお、RepositoryImplは自動生成されるため作成不要である。</p>
+<div class="highlight-java notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">com.example.todo.domain.repository.todo</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.JpaRepository</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.Query</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.data.repository.query.Param</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.example.todo.domain.model.Todo</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">TodoRepository</span> <span class="kd">extends</span> <span class="n">JpaRepository</span><span class="o">&lt;</span><span class="n">Todo</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="nd">@Query</span><span class="o">(</span><span class="s">&quot;SELECT COUNT(t) FROM Todo t WHERE t.finished = :finished&quot;</span><span class="o">)</span>
+    <span class="kt">long</span> <span class="nf">countByFinished</span><span class="o">(</span><span class="nd">@Param</span><span class="o">(</span><span class="s">&quot;finished&quot;</span><span class="o">)</span> <span class="kt">boolean</span> <span class="n">finished</span><span class="o">);</span>
+
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="mybatis">
+<h3>MyBatis<a class="headerlink" href="#mybatis" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li>O/R MapperというよりもSQLとオブジェクトをマッピングするSQL Mapperという表現が正しい</li>
+<li>Mapperファイル(xml)にSQLとオブジェクトのメソッドとのマッピングを定義する</li>
+<li>SQLでデータベースの操作ができつつも、ビジネスロジックからSQL自体を隠蔽できる</li>
+</ul>
+<p>以下にMapperファイルの例を示す。
+なお、Repositoryについては通常と同様にエンティティとプロパティを定義する。</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="cp">&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span>
+<span class="cp">    &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;</span>
+
+<span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">&quot;com.example.todo.domain.repository.todo.TodoRepository&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">&quot;todoResultMap&quot;</span> <span class="na">type=</span><span class="s">&quot;Todo&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;id</span> <span class="na">property=</span><span class="s">&quot;todoId&quot;</span> <span class="na">column=</span><span class="s">&quot;todo_id&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">&quot;todoTitle&quot;</span> <span class="na">column=</span><span class="s">&quot;todo_title&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">&quot;finished&quot;</span> <span class="na">column=</span><span class="s">&quot;finished&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">&quot;createdAt&quot;</span> <span class="na">column=</span><span class="s">&quot;created_at&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/resultMap&gt;</span>
+
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&quot;findById&quot;</span> <span class="na">parameterType=</span><span class="s">&quot;String&quot;</span> <span class="na">resultMap=</span><span class="s">&quot;todoResultMap&quot;</span><span class="nt">&gt;</span>
+    <span class="cp">&lt;![CDATA[</span>
+<span class="cp">        SELECT</span>
+<span class="cp">            todo_id,</span>
+<span class="cp">            todo_title,</span>
+<span class="cp">            finished,</span>
+<span class="cp">            created_at</span>
+<span class="cp">        FROM</span>
+<span class="cp">            todo</span>
+<span class="cp">        WHERE</span>
+<span class="cp">            todo_id = #{todoId}</span>
+<span class="cp">    ]]&gt;</span>
+    <span class="nt">&lt;/select&gt;</span>
+
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&quot;findAll&quot;</span> <span class="na">resultMap=</span><span class="s">&quot;todoResultMap&quot;</span><span class="nt">&gt;</span>
+    <span class="cp">&lt;![CDATA[</span>
+<span class="cp">        SELECT</span>
+<span class="cp">            todo_id,</span>
+<span class="cp">            todo_title,</span>
+<span class="cp">            finished,</span>
+<span class="cp">            created_at</span>
+<span class="cp">        FROM</span>
+<span class="cp">            todo</span>
+<span class="cp">    ]]&gt;</span>
+    <span class="nt">&lt;/select&gt;</span>
+
+    <span class="nt">&lt;insert</span> <span class="na">id=</span><span class="s">&quot;create&quot;</span> <span class="na">parameterType=</span><span class="s">&quot;Todo&quot;</span><span class="nt">&gt;</span>
+    <span class="cp">&lt;![CDATA[</span>
+<span class="cp">        INSERT INTO todo</span>
+<span class="cp">        (</span>
+<span class="cp">            todo_id,</span>
+<span class="cp">            todo_title,</span>
+<span class="cp">            finished,</span>
+<span class="cp">            created_at</span>
+<span class="cp">        )</span>
+<span class="cp">        VALUES</span>
+<span class="cp">        (</span>
+<span class="cp">            #{todoId},</span>
+<span class="cp">            #{todoTitle},</span>
+<span class="cp">            #{finished},</span>
+<span class="cp">            #{createdAt}</span>
+<span class="cp">        )</span>
+<span class="cp">    ]]&gt;</span>
+    <span class="nt">&lt;/insert&gt;</span>
+
+    <span class="nt">&lt;update</span> <span class="na">id=</span><span class="s">&quot;update&quot;</span> <span class="na">parameterType=</span><span class="s">&quot;Todo&quot;</span><span class="nt">&gt;</span>
+    <span class="cp">&lt;![CDATA[</span>
+<span class="cp">        UPDATE todo</span>
+<span class="cp">        SET</span>
+<span class="cp">            todo_title = #{todoTitle},</span>
+<span class="cp">            finished = #{finished},</span>
+<span class="cp">            created_at = #{createdAt}</span>
+<span class="cp">        WHERE</span>
+<span class="cp">            todo_id = #{todoId}</span>
+<span class="cp">    ]]&gt;</span>
+    <span class="nt">&lt;/update&gt;</span>
+
+    <span class="nt">&lt;delete</span> <span class="na">id=</span><span class="s">&quot;delete&quot;</span> <span class="na">parameterType=</span><span class="s">&quot;Todo&quot;</span><span class="nt">&gt;</span>
+    <span class="cp">&lt;![CDATA[</span>
+<span class="cp">        DELETE FROM</span>
+<span class="cp">            todo</span>
+<span class="cp">        WHERE</span>
+<span class="cp">            todo_id = #{todoId}</span>
+<span class="cp">    ]]&gt;</span>
+    <span class="nt">&lt;/delete&gt;</span>
+
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&quot;countByFinished&quot;</span> <span class="na">parameterType=</span><span class="s">&quot;Boolean&quot;</span>
+        <span class="na">resultType=</span><span class="s">&quot;Long&quot;</span><span class="nt">&gt;</span>
+    <span class="cp">&lt;![CDATA[</span>
+<span class="cp">        SELECT</span>
+<span class="cp">            COUNT(*)</span>
+<span class="cp">        FROM</span>
+<span class="cp">            todo</span>
+<span class="cp">        WHERE</span>
+<span class="cp">            finished = #{finished}</span>
+<span class="cp">    ]]&gt;</span>
+    <span class="nt">&lt;/select&gt;</span>
+
+<span class="nt">&lt;/mapper&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="mybatisjpa">
+<h3>MyBatisとJPAの使い分け<a class="headerlink" href="#mybatisjpa" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li>複雑なクエリが必要であり、今後もカスタマイズが想定される場合はカスタマイズ性の高いMyBatisを使用する</li>
+<li>単純なクエリしか不要である、即座にモックアップ的なアプリケーションを構築する場合はJPAを使用する</li>
+<li>JPAの場合、JPQLという独自のクエリ言語を用いるため、JPAに習熟している開発者が必要になる</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>参考文献<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://terasolunaorg.github.io/guideline/current/ja/index.html">TERASOLUNA Server Framework for Java (5.x) Development Guideline</a></li>
+<li><a class="reference external" href="https://www.amazon.co.jp/dp/4798142476">Spring徹底入門</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Spring" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../report/book/index.html" class="btn btn-neutral float-right" title="Book Report" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, tm-hack.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

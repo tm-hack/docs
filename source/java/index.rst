@@ -1,4 +1,4 @@
-Spring
+Java
 =================================
 
 Contents:
@@ -6,4 +6,4 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   spring_tutorial.rst
+   spring/index.rst
