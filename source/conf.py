@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 import sphinx_rtd_theme
-project = 'test_sphinx'
+project = 'tm-hack'
 copyright = '2022, tm-hack'
 author = 'tm-hack'
 
