@@ -17,14 +17,14 @@ Sphinxの導入
 .. sourcecode:: bash
    :linenos:
 
-   sudo pip install sphinx
+   $ sudo pip install sphinx
 
 2. Sphinxの拡張テーマである（sphinx_rtd_theme）をインストールする。
 
 .. sourcecode:: bash
    :linenos:
 
-   sudo pip install sphinx_rtd_theme
+   $ sudo pip install sphinx_rtd_theme
 
 Sphinxプロジェクトの作成
 --------------------------
@@ -33,7 +33,7 @@ Sphinxプロジェクトの作成
 .. sourcecode:: bash
    :linenos:
 
-   sphinx-quickstart
+   $ sphinx-quickstart
 
 2. 拡張テーマ（sphinx_rtd_theme）の適用のため、conf.pyを修正する。
 
@@ -52,7 +52,7 @@ Sphinxプロジェクトの作成
 .. sourcecode:: python3
    :linenos:
 
-   make html
+   $ make html
 
 ビルドが正常終了すれば、build配下にindex.htmlおよびhtml等のstaticファイルが作成される。
 
@@ -63,14 +63,14 @@ Sphinxプロジェクトの作成
 .. sourcecode:: python3
    :linenos:
 
-   pip install sphinx-autobuild
+   $ pip install sphinx-autobuild
 
 2. sphinx-autobuildを起動する。
 
 .. sourcecode:: python3
    :linenos:
 
-   sphinx-autobuild source build
+   $ sphinx-autobuild source build
 
 source配下のファイルが変更されると自動でビルドが動き、build配下にhtmlファイル等が格納される。
 また、sphinx-autobuildを起動した後に\ http://127.0.0.1:8000/ \にアクセスすると、ビルドされたHTML文書にアクセスできる。
@@ -96,26 +96,26 @@ first-commitを行わないと、gh-pagesブランチの作成ができなかっ
 .. sourcecode:: bash
    :linenos:
 
-   mkdir docs
-   cd docs
-   echo "# docs" >> README.md
-   git init
-   git add README.md
-   git commit -m "first commit"
-   git remote add origin https://github.com/user/xxxxx
-   git push origin main
+   $ mkdir docs
+   $ cd docs
+   $ echo "# docs" >> README.md
+   $ git init
+   $ git add README.md
+   $ git commit -m "first commit"
+   $ git remote add origin https://github.com/user/xxxxx
+   $ git push origin main
 
 3. 作成したSphinxプロジェクトをGithubPagesと連携する。
 
 .. sourcecode:: bash
    :linenos:
 
-   cp ../sphinx/. .
-   git branch gh-pages
-   git checkout main
-   git add .
-   git commit -m "setup sphinx"
-   git push origin gh-pages
+   $ cp ../sphinx/. .
+   $ git branch gh-pages
+   $ git checkout main
+   $ git add .
+   $ git commit -m "setup sphinx"
+   $ git push origin gh-pages
 
 4. Github上で公開設定を行う。
 Githubのリポジトリからgh-pagesブランチの公開設定を行う。Sourceにはdocs配下のファイルを設定する。

@@ -37,7 +37,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../java/spring/index.html">Spring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../java/index.html">Java</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../report/book/index.html">Book Report</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../report/seminar/index.html">Seminar Report</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">ツール類に関するメモ</a><ul class="current">
@@ -53,6 +53,7 @@
 <li class="toctree-l3"><a class="reference internal" href="howto_sphinx.html">SphinxのTips</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../git/index.html">Git</a></li>
 </ul>
 </li>
 </ul>
@@ -100,13 +101,13 @@
 <ol class="arabic simple">
 <li>pip3を利用してSphinxのインストールを行う。</li>
 </ol>
-<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo pip install sphinx
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ sudo pip install sphinx
 </pre></div>
 </td></tr></table></div>
 <ol class="arabic simple" start="2">
 <li>Sphinxの拡張テーマである（sphinx_rtd_theme）をインストールする。</li>
 </ol>
-<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sudo pip install sphinx_rtd_theme
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ sudo pip install sphinx_rtd_theme
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -115,7 +116,7 @@
 <ol class="arabic simple">
 <li>sphinx-quickstartコマンドでsphinxのプロジェクトを作成する。</li>
 </ol>
-<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>sphinx-quickstart
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ sphinx-quickstart
 </pre></div>
 </td></tr></table></div>
 <ol class="arabic simple" start="2">
@@ -137,7 +138,7 @@
 <ol class="arabic simple" start="3">
 <li>Sphinxプロジェクトのビルドを行う。</li>
 </ol>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">html</span>
+<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ make html
 </pre></div>
 </td></tr></table></div>
 <p>ビルドが正常終了すれば、build配下にindex.htmlおよびhtml等のstaticファイルが作成される。</p>
@@ -147,13 +148,13 @@
 <ol class="arabic simple">
 <li>ホットリロードを実現するためにsphinx-autobuildをインストールする。</li>
 </ol>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">autobuild</span>
+<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ pip install sphinx-autobuild
 </pre></div>
 </td></tr></table></div>
 <ol class="arabic simple" start="2">
 <li>sphinx-autobuildを起動する。</li>
 </ol>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">autobuild</span> <span class="n">source</span> <span class="n">build</span>
+<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ sphinx-autobuild source build
 </pre></div>
 </td></tr></table></div>
 <p>source配下のファイルが変更されると自動でビルドが動き、build配下にhtmlファイル等が格納される。
@@ -182,14 +183,14 @@ first-commitを行わないと、gh-pagesブランチの作成ができなかっ
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span>mkdir docs
-<span class="nb">cd</span> docs
-<span class="nb">echo</span> <span class="s2">&quot;# docs&quot;</span> &gt;&gt; README.md
-git init
-git add README.md
-git commit -m <span class="s2">&quot;first commit&quot;</span>
-git remote add origin https://github.com/user/xxxxx
-git push origin main
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ mkdir docs
+$ <span class="nb">cd</span> docs
+$ <span class="nb">echo</span> <span class="s2">&quot;# docs&quot;</span> &gt;&gt; README.md
+$ git init
+$ git add README.md
+$ git commit -m <span class="s2">&quot;first commit&quot;</span>
+$ git remote add origin https://github.com/user/xxxxx
+$ git push origin main
 </pre></div>
 </td></tr></table></div>
 <ol class="arabic simple" start="3">
@@ -200,12 +201,12 @@ git push origin main
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>cp ../sphinx/. .
-git branch gh-pages
-git checkout main
-git add .
-git commit -m <span class="s2">&quot;setup sphinx&quot;</span>
-git push origin gh-pages
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ cp ../sphinx/. .
+$ git branch gh-pages
+$ git checkout main
+$ git add .
+$ git commit -m <span class="s2">&quot;setup sphinx&quot;</span>
+$ git push origin gh-pages
 </pre></div>
 </td></tr></table></div>
 <p>4. Github上で公開設定を行う。
