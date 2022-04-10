@@ -7,4 +7,4 @@ Contents:
    :maxdepth: 3
 
    article/spring_tutorial.rst
-   article/debug.rst
+   article/spring_debug.rst
