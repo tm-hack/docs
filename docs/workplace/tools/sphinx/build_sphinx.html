@@ -138,7 +138,7 @@
 <ol class="arabic simple" start="3">
 <li>Sphinxプロジェクトのビルドを行う。</li>
 </ol>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ make html
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ make html
 </pre></div>
 </td></tr></table></div>
 <p>ビルドが正常終了すれば、build配下にindex.htmlおよびhtml等のstaticファイルが作成される。</p>
@@ -148,13 +148,13 @@
 <ol class="arabic simple">
 <li>ホットリロードを実現するためにsphinx-autobuildをインストールする。</li>
 </ol>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ pip install sphinx-autobuild
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ pip install sphinx-autobuild
 </pre></div>
 </td></tr></table></div>
 <ol class="arabic simple" start="2">
 <li>sphinx-autobuildを起動する。</li>
 </ol>
-<div class="highlight-python3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ sphinx-autobuild source build
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ sphinx-autobuild <span class="nb">source</span> build
 </pre></div>
 </td></tr></table></div>
 <p>source配下のファイルが変更されると自動でビルドが動き、build配下にhtmlファイル等が格納される。

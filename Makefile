@@ -20,4 +20,5 @@ help:
 
 # Put it first so that "make" without argument is like "make help".
 html:
+	rm -rf docs/*
 	@$(SPHINXBUILD) -b html "$(SOURCEDIR)" "$(BUILDDIR)/docs"

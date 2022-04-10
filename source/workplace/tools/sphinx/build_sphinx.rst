@@ -49,7 +49,7 @@ Sphinxプロジェクトの作成
 
 3. Sphinxプロジェクトのビルドを行う。
 
-.. sourcecode:: python3
+.. sourcecode:: bash
    :linenos:
 
    $ make html
@@ -60,14 +60,14 @@ Sphinxプロジェクトの作成
 --------------------
 1. ホットリロードを実現するためにsphinx-autobuildをインストールする。
 
-.. sourcecode:: python3
+.. sourcecode:: bash
    :linenos:
 
    $ pip install sphinx-autobuild
 
 2. sphinx-autobuildを起動する。
 
-.. sourcecode:: python3
+.. sourcecode:: bash
    :linenos:
 
    $ sphinx-autobuild source build
