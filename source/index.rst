@@ -2,9 +2,9 @@ tm-hack
 =======================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
-   java/index.rst
+   java/spring/index.rst
    report/book/index.rst
    report/seminar/index.rst
    workplace/tools/index.rst

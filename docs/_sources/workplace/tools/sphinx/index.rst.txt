@@ -4,7 +4,7 @@ Sphinx
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    build_sphinx.rst
    howto_reStructuredText.rst

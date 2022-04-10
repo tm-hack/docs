@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TERASOLUNA Server Framework &mdash; tm-hack  ドキュメント</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <title>TERASOLUNA Server Framework &mdash; tm-hack  ドキュメント</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script type="text/javascript" src="../../_static/translations.js"></script>
-    <script src="../../_static/js/theme.js"></script>
-    <link rel="index" title="索引" href="../../genindex.html" />
-    <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="Book Report" href="../../report/book/index.html" />
-    <link rel="prev" title="Spring" href="index.html" /> 
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="検索" href="../../../search.html" />
+    <link rel="next" title="SpringのDebugメモ" href="debug.html" />
+    <link rel="prev" title="Spring" href="../index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -26,10 +26,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> tm-hack
+            <a href="../../../index.html" class="icon icon-home"> tm-hack
           </a>
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -37,23 +37,26 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Java</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">Spring</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">TERASOLUNA Server Framework</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">前提事項</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">TERASOLUNA Server Frameworkの概要</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#spirng-mvc">Spirng MVCのアーキテクチャ</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#o-r-mapper">O/R Mapper</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">参考文献</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Spring</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">TERASOLUNA Server Framework</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">前提事項</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">TERASOLUNA Server Frameworkの概要</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spirng-mvc">Spirng MVCのアーキテクチャ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#o-r-mapper">O/R Mapper</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#jpa-java-persistance-api">JPA（Java Persistance API）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mybatis">MyBatis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mybatisjpa">MyBatisとJPAの使い分け</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">参考文献</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">SpringのDebugメモ</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../report/book/index.html">Book Report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../report/seminar/index.html">Seminar Report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../workplace/tools/index.html">ツール類に関するメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../report/book/index.html">Book Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../report/seminar/index.html">Seminar Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workplace/tools/index.html">ツール類に関するメモ</a></li>
 </ul>
 
         </div>
@@ -62,19 +65,18 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">tm-hack</a>
+          <a href="../../../index.html">tm-hack</a>
       </nav>
 
       <div class="wy-nav-content">
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">Java</a> &raquo;</li>
-          <li><a href="index.html">Spring</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Spring</a> &raquo;</li>
       <li>TERASOLUNA Server Framework</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/java/spring/spring_tutorial.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/java/spring/article/spring_tutorial.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -476,8 +478,8 @@ TERASOLUNA Server Frameworkでは、O/R Mapperとして以下のいずれかを�
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Spring" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../../report/book/index.html" class="btn btn-neutral float-right" title="Book Report" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../index.html" class="btn btn-neutral float-left" title="Spring" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="debug.html" class="btn btn-neutral float-right" title="SpringのDebugメモ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

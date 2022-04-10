@@ -4,6 +4,7 @@ Spring
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
-   spring_tutorial.rst
+   article/spring_tutorial.rst
+   article/debug.rst
