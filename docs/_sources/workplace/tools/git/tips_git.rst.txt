@@ -1,19 +1,17 @@
+======================
 GitのTips
 ======================
 GitのTipsについて記述する。
 
 git cloneしたリポジトリを別リポジトリにpushする
--------------------------------------------------
-
-概要
-^^^^
+===============================================
 git cloneしたリポジトリを別リポジトリとして管理するための方法を記す。
 commit履歴は前のリポジトリから引き継がれる。
 今回はTERASOLUNAチュートリアル用にtodo-RestAPIリポジトリを作成するため、
 todo-MyBatis3をclone元とした。
 
 手順
-^^^^
+----
 1. プロジェクト用のディレクトリを作成する。
 
 .. sourcecode:: bash
@@ -51,19 +49,19 @@ Githubよりtodo-RestAPIリポジトリを作成する。
    # first push
    $ git push origin main
 
-5. commit履歴の確認
+変更を戻したい
+================
 
-履歴が引き継がれていることが分かる。
+addを取り消して、ファイルを編集前に戻す
+----------------------------------------
 
+「修正してaddをしたが、不具合を発見したため最後にcommitした状態まで戻したい」という場合の手順を以下に示す。
+
+手順
+^^^^
 .. sourcecode:: bash
    :linenos:
    
-   $ git log
-   commit c7562fb28a4ee9edc8c16c70991ab3431e30d688 (HEAD -> main, origin/main)
-   Author: takumi <xxxxxxxxxx>
-   Date:   Fri Apr 8 20:45:20 2022 +0900
-
-    merge aplication&fix mybatis property file
-
-   ~~~~~~~~~~
-
+   $ git long  #commitログを確認する
+   $ git rm --cached -r .  #addを取り消す
+   $ git checkout HEAD .  #最後にcommitした状態に戻す

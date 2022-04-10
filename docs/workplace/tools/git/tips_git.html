@@ -44,6 +44,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Git</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">GitのTips</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#git-clonepush">git cloneしたリポジトリを別リポジトリにpushする</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">変更を戻したい</a></li>
 </ul>
 </li>
 </ul>
@@ -83,15 +84,12 @@
 <p>GitのTipsについて記述する。</p>
 <div class="section" id="git-clonepush">
 <h2>git cloneしたリポジトリを別リポジトリにpushする<a class="headerlink" href="#git-clonepush" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id1">
-<h3>概要<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>git cloneしたリポジトリを別リポジトリとして管理するための方法を記す。
 commit履歴は前のリポジトリから引き継がれる。
 今回はTERASOLUNAチュートリアル用にtodo-RestAPIリポジトリを作成するため、
 todo-MyBatis3をclone元とした。</p>
-</div>
-<div class="section" id="id2">
-<h3>手順<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id1">
+<h3>手順<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ol class="arabic simple">
 <li>プロジェクト用のディレクトリを作成する。</li>
 </ol>
@@ -138,27 +136,23 @@ https://github.com/tm-hack/todo-RestAPI
 $ git push origin main
 </pre></div>
 </td></tr></table></div>
-<ol class="arabic simple" start="5">
-<li>commit履歴の確認</li>
-</ol>
-<p>履歴が引き継がれていることが分かる。</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>変更を戻したい<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="add">
+<h3>addを取り消して、ファイルを編集前に戻す<a class="headerlink" href="#add" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>「修正してaddをしたが、不具合を発見したため最後にcommitした状態まで戻したい」という場合の手順を以下に示す。</p>
+<div class="section" id="id3">
+<h4>手順<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ git log
-commit c7562fb28a4ee9edc8c16c70991ab3431e30d688 <span class="o">(</span>HEAD -&gt; main, origin/main<span class="o">)</span>
-Author: takumi &lt;xxxxxxxxxx&gt;
-Date:   Fri Apr <span class="m">8</span> <span class="m">20</span>:45:20 <span class="m">2022</span> +0900
-
- merge aplication<span class="p">&amp;</span>fix mybatis property file
-
-~~~~~~~~~~
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ git long  <span class="c1">#commitログを確認する</span>
+$ git rm --cached -r .  <span class="c1">#addを取り消す</span>
+$ git checkout HEAD .  <span class="c1">#最後にcommitした状態に戻す</span>
 </pre></div>
 </td></tr></table></div>
+</div>
 </div>
 </div>
 </div>
