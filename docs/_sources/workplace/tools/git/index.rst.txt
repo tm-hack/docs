@@ -1,4 +1,4 @@
-ツール類に関するメモ
+Git
 =================================
 
 Contents:
@@ -6,5 +6,4 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   sphinx/index.rst
-   git/index.rst
+   tips_git.rst

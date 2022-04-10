@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="ja" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitのTips &mdash; tm-hack  ドキュメント</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="検索" href="../../../search.html" />
+    <link rel="prev" title="Git" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> tm-hack
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../java/index.html">Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../report/book/index.html">Book Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../report/seminar/index.html">Seminar Report</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">ツール類に関するメモ</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Git</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">GitのTips</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#git-clonepush">git cloneしたリポジトリを別リポジトリにpushする</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">tm-hack</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">ツール類に関するメモ</a> &raquo;</li>
+          <li><a href="index.html">Git</a> &raquo;</li>
+      <li>GitのTips</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/workplace/tools/git/tips_git.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="gittips">
+<h1>GitのTips<a class="headerlink" href="#gittips" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>GitのTipsについて記述する。</p>
+<div class="section" id="git-clonepush">
+<h2>git cloneしたリポジトリを別リポジトリにpushする<a class="headerlink" href="#git-clonepush" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id1">
+<h3>概要<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>git cloneしたリポジトリを別リポジトリとして管理するための方法を記す。
+commit履歴は前のリポジトリから引き継がれる。
+今回はTERASOLUNAチュートリアル用にtodo-RestAPIリポジトリを作成するため、
+todo-MyBatis3をclone元とした。</p>
+</div>
+<div class="section" id="id2">
+<h3>手順<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li>プロジェクト用のディレクトリを作成する。</li>
+</ol>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ mkdir todo-RestAPI
+$ ls
+drwxr-xr-x <span class="m">1</span>  todo-MyBatis3/
+drwxr-xr-x <span class="m">1</span>  todo-RestAPI/
+</pre></div>
+</td></tr></table></div>
+<ol class="arabic simple" start="2">
+<li>取得元のリポジトリからgit cloneを実行する。</li>
+</ol>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> todo-RestAPI
+$ git clone https://github.com/tm-hack/todo-MyBatis3
+</pre></div>
+</td></tr></table></div>
+<ol class="arabic simple" start="3">
+<li>新しいリポジトリを作成する。</li>
+</ol>
+<p>Githubよりtodo-RestAPIリポジトリを作成する。</p>
+<ol class="arabic simple" start="4">
+<li>cloneしたリポジトリのremoteの接続先を新しいリポジトリに変更する。</li>
+</ol>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> todo
+<span class="c1"># remote urlの確認</span>
+$ git config remote.origin.url
+https://github.com/tm-hack/todo-MyBatis3
+$ remote urlの変更
+git remote set-url origin https://github.com/tm-hack/todo-RestAPI
+https://github.com/tm-hack/todo-RestAPI
+<span class="c1"># first push</span>
+$ git push origin main
+</pre></div>
+</td></tr></table></div>
+<ol class="arabic simple" start="5">
+<li>commit履歴の確認</li>
+</ol>
+<p>履歴が引き継がれていることが分かる。</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ git log
+commit c7562fb28a4ee9edc8c16c70991ab3431e30d688 <span class="o">(</span>HEAD -&gt; main, origin/main<span class="o">)</span>
+Author: takumi &lt;xxxxxxxxxx&gt;
+Date:   Fri Apr <span class="m">8</span> <span class="m">20</span>:45:20 <span class="m">2022</span> +0900
+
+ merge aplication<span class="p">&amp;</span>fix mybatis property file
+
+~~~~~~~~~~
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Git" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, tm-hack.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
