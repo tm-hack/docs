@@ -46,6 +46,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">InteliJ</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">InteliJのTips</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#intelij">コマンドラインからInteliJのプロジェクトを開く</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tomcat">実行構成にtomcatを追加する</a></li>
 </ul>
 </li>
 </ul>
@@ -104,6 +105,39 @@
 </td></tr></table></div>
 </div>
 </div>
+<div class="section" id="tomcat">
+<h2>実行構成にtomcatを追加する<a class="headerlink" href="#tomcat" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>作成したプロジェクトをtomcatにデプロイ、実行するため手順を記す。</p>
+<div class="section" id="id2">
+<h3>手順<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic">
+<li><p class="first"><a class="reference external" href="https://tomcat.apache.org/download-90.cgi">公式サイト</a> より任意のバージョンのtomcatをインストールする。</p>
+</li>
+<li><p class="first">インストールしたtomcatを任意のフォルダに展開する。</p>
+</li>
+<li><p class="first">ログ出力時の文字コードを変更する。インストール時の設定のままだと文字コードがUTF-8であり、コマンドラインへのログの出力時に漢字かなが文字化けするため修正する。</p>
+<p>apache-tomcat-9.0.62&gt;conf&gt;logging.properties</p>
+<div class="highlight-properties notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na">java.util.logging.ConsoleHandler.formatter</span> <span class="o">=</span> <span class="s">org.apache.juli.OneLineFormatter</span>
+<span class="na">java.util.logging.ConsoleHandler.encoding</span> <span class="o">=</span> <span class="s">UTF-8 → SJIS</span>
+</pre></div>
+</td></tr></table></div>
+</li>
+<li><p class="first">InteliJで以下の作業を実施する。</p>
+</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>アプリケーションを実行する（Alt+Shift+F10）</li>
+<li>実行構成の編集をクリックする</li>
+<li>新規構成の追加でtomcat（ローカル）を選択する</li>
+<li>「アプリケーションサーバ」の「構成」をクリックし、インストールしたtomcatを選択する</li>
+<li>そのほかの項目も入力する</li>
+<li>「実行」をクリックして、デプロイと実行が始まる</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
 </div>
 
 
@@ -118,7 +152,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2022, tm-hack.
-      <span class="lastupdated">最終更新: 2022-04-13
+      <span class="lastupdated">最終更新: 2022-04-14
       </span></p>
   </div>
 
