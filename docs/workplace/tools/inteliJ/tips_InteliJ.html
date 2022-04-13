@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sphinx &mdash; tm-hack  ドキュメント</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <title>InteliJのTips &mdash; tm-hack  ドキュメント</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
@@ -17,8 +17,8 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="検索" href="../../../search.html" />
-    <link rel="next" title="Sphinxの環境構築" href="build_sphinx.html" />
-    <link rel="prev" title="InteliJのTips" href="../inteliJ/tips_InteliJ.html" /> 
+    <link rel="next" title="Sphinx" href="../sphinx/index.html" />
+    <link rel="prev" title="InteliJ" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,13 +43,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../report/seminar/index.html">Seminar Report</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../debug/index.html">Debugメモ</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">ツール類に関するメモ</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../inteliJ/index.html">InteliJ</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Sphinx</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="build_sphinx.html">Sphinxの環境構築</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sphinx_debug.html">SphinxのDebugメモ</a></li>
-<li class="toctree-l3"><a class="reference internal" href="howto_reStructuredText.html">reStructuredTextの歩き方</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">InteliJ</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">InteliJのTips</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#intelij">コマンドラインからInteliJのプロジェクトを開く</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../git/index.html">Git</a></li>
 </ul>
 </li>
@@ -70,9 +71,10 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">ツール類に関するメモ</a> &raquo;</li>
-      <li>Sphinx</li>
+          <li><a href="index.html">InteliJ</a> &raquo;</li>
+      <li>InteliJのTips</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../../_sources/workplace/tools/sphinx/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/workplace/tools/inteliJ/tips_InteliJ.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -80,41 +82,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="sphinx">
-<h1>Sphinx<a class="headerlink" href="#sphinx" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="build_sphinx.html">Sphinxの環境構築</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="build_sphinx.html#id1">前提事項</a></li>
-<li class="toctree-l2"><a class="reference internal" href="build_sphinx.html#id2">Sphinxの導入</a></li>
-<li class="toctree-l2"><a class="reference internal" href="build_sphinx.html#id3">Sphinxプロジェクトの作成</a></li>
-<li class="toctree-l2"><a class="reference internal" href="build_sphinx.html#id4">ホットリロードの導入</a></li>
-<li class="toctree-l2"><a class="reference internal" href="build_sphinx.html#github-pages">Github Pagesとの連携</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="sphinx_debug.html">SphinxのDebugメモ</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sphinx_debug.html#id1">サイドバーをクリックすると子のツリーが閉じる</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="sphinx_debug.html#id2">原因</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sphinx_debug.html#id3">解決方法</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="howto_reStructuredText.html">reStructuredTextの歩き方</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="howto_reStructuredText.html#id1">見出しの書き方</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="howto_reStructuredText.html#id2">reStructuredText</a></li>
-<li class="toctree-l3"><a class="reference internal" href="howto_reStructuredText.html#markdown">markdown</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="howto_reStructuredText.html#id3">コードブロックの書き方</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="howto_reStructuredText.html#id4">reStructuredText</a></li>
-<li class="toctree-l3"><a class="reference internal" href="howto_reStructuredText.html#id5">markdown</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+  <div class="section" id="intelijtips">
+<h1>InteliJのTips<a class="headerlink" href="#intelijtips" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>InteliJのTipsについて記述する。</p>
+<div class="section" id="intelij">
+<h2>コマンドラインからInteliJのプロジェクトを開く<a class="headerlink" href="#intelij" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>コマンドラインからInteliJのプロジェクトを開くための手順を記す。</p>
+<div class="section" id="id1">
+<h3>手順<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>直近で開いていたプロジェクトを開く。</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ idea64.exe
+</pre></div>
+</td></tr></table></div>
+<p>現在のカレントディレクトリのプロジェクトを開く。</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ idea64.exe .
+</pre></div>
+</td></tr></table></div>
+<p>ディレクトリを指定して、プロジェクトを開く。</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>$ idea64.exe /home/project
+</pre></div>
+</td></tr></table></div>
+</div>
 </div>
 </div>
 
@@ -122,8 +110,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../inteliJ/tips_InteliJ.html" class="btn btn-neutral float-left" title="InteliJのTips" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="build_sphinx.html" class="btn btn-neutral float-right" title="Sphinxの環境構築" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="InteliJ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../sphinx/index.html" class="btn btn-neutral float-right" title="Sphinx" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
