@@ -25,7 +25,42 @@ Spirng MVCのアーキテクチャ
 
 .. image:: http://terasolunaorg.github.io/guideline/current/ja/_images/RequestLifecycle.png
 
-O/R Mapper
+ControllerとServiceの境界について
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+チュートリアルを実施していて、ControllerとServiceの境界について曖昧になりうると考えたので、
+ドキュメントの記述を参照した。
+
+   Controllerは以下の5つの役割を担う。
+   
+   #. リクエストを受け取るためのメソッドを提供する。（@RequestMapping）
+   
+   #. リクエストパラメータの入力チェックを行う。（@Validated）
+   
+   #. 業務処理の呼び出しを行う。（Sericeの呼び出し）
+   
+   #. 業務処理の処理結果をModelに反映する。（Viewからの処理結果を参照可能にする）
+   
+   #. 処理結果に対応するView名を返却する。（描画処理はJSPで行うことによる責任分離）
+   
+   Serviceは以下の2つの役割を担う。
+   
+   #. Controllerに対して業務ロジックを提供する。（Serviceはビジネスルールに関わる処理の実装に専念する）
+   
+   #. トランザクション境界を設ける。（@Transactional)
+   
+   ControllerとSericeで実装するロジックについては以下のルールに則ることを推奨する。
+   
+   #. クライアントからリクエストされたデータに対する単項目チェック、相関項目チェックはController側(Bean ValidationまたはSpring Validator)で行う。
+   
+   #. Serviceに渡すデータへの変換処理(Bean変換、型変換、形式変換など)は、ServiceではなくController側で行う。
+   
+   #. ビジネスルールに関わる処理はServiceで行う。業務データへのアクセスは、RepositoryまたはO/R Mapperに委譲する。
+   
+   #. ServiceからControllerに返却するデータ（クライアントへレスポンスするデータ）に対する値の変換処理(型変換、形式変換など)は、Serviceではなく、Controller側（Viewクラスなど）で行う。
+
+
+
+O/R Mapperについて
 --------------------
 O/R Mapperはオブジェクト指向言語で書かれたアプリケーションと非オブジェクト指向であるデータベースやSQLの間インピーダンスミスマッチを解消させるためのフレームワークである。
 TERASOLUNA Server Frameworkでは、O/R Mapperとして以下のいずれかを想定している。
@@ -155,7 +190,7 @@ MyBatis
            FROM
                todo
            WHERE
-               todo_id = #{todoId}
+               todo_id = #.{todoId}
        ]]>
        </select>
    
@@ -182,10 +217,10 @@ MyBatis
            )
            VALUES
            (
-               #{todoId},
-               #{todoTitle},
-               #{finished},
-               #{createdAt}
+               #.{todoId},
+               #.{todoTitle},
+               #.{finished},
+               #.{createdAt}
            )
        ]]>
        </insert>
@@ -194,11 +229,11 @@ MyBatis
        <![CDATA[
            UPDATE todo
            SET
-               todo_title = #{todoTitle},
-               finished = #{finished},
-               created_at = #{createdAt}
+               todo_title = #.{todoTitle},
+               finished = #.{finished},
+               created_at = #.{createdAt}
            WHERE
-               todo_id = #{todoId}
+               todo_id = #.{todoId}
        ]]>
        </update>
    
@@ -207,7 +242,7 @@ MyBatis
            DELETE FROM
                todo
            WHERE
-               todo_id = #{todoId}
+               todo_id = #.{todoId}
        ]]>
        </delete>
    
@@ -219,7 +254,7 @@ MyBatis
            FROM
                todo
            WHERE
-               finished = #{finished}
+               finished = #.{finished}
        ]]>
        </select>
    
@@ -231,8 +266,3 @@ MyBatisとJPAの使い分け
 * 複雑なクエリが必要であり、今後もカスタマイズが想定される場合はカスタマイズ性の高いMyBatisを使用する
 * 単純なクエリしか不要である、即座にモックアップ的なアプリケーションを構築する場合はJPAを使用する
 * JPAの場合、JPQLという独自のクエリ言語を用いるため、JPAに習熟している開発者が必要になる
-
-参考文献
----------
-* `TERASOLUNA Server Framework for Java (5.x) Development Guideline <http://terasolunaorg.github.io/guideline/current/ja/index.html>`_
-* `Spring徹底入門 <https://www.amazon.co.jp/dp/4798142476>`_

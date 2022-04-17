@@ -40,7 +40,11 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">初心者の館</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">TERASOLUNA</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="spring_tutorial.html">TERASOLUNA Server Framework</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">TERASOLUNA Server Framework（REST編）</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">TERASOLUNA Server Framework（REST編）</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">前提事項</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#springmvcrestful-web-service">SpringMVCを利用したRESTful Web Serviceの開発</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="spring_tutorial_session.html">TERASOLUNA Server Framework（Session編）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="spring_tutorial_security.html">TERASOLUNA Server Framework（SpringSecutiry編）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="spring_batch_tutorial.html">TERASOLUNA Batch Framework</a></li>
@@ -88,7 +92,33 @@
              
   <div class="section" id="terasoluna-server-framework-rest">
 <h1>TERASOLUNA Server Framework（REST編）<a class="headerlink" href="#terasoluna-server-framework-rest" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>本章ではTERASOLUNA Server Frameworkのチュートリアルを実施時の内容をまとめる。</p>
+<p>本章ではTERASOLUNA Server Framework（REST編）のチュートリアルを実施時の内容をまとめる。</p>
+<div class="section" id="id1">
+<h2>前提事項<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>検証環境は以下の通りである。</p>
+<ul class="simple">
+<li>Windows11</li>
+<li>JDK 17.0.2</li>
+<li>apache-tomcat 9.0.55</li>
+</ul>
+<p>また、本ページで掲載している図については <a class="reference external" href="http://terasolunaorg.github.io/guideline/current/ja/index.html">TERASOLUNA Server Framework</a> から引用している。</p>
+</div>
+<div class="section" id="springmvcrestful-web-service">
+<h2>SpringMVCを利用したRESTful Web Serviceの開発<a class="headerlink" href="#springmvcrestful-web-service" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Spring MVCの機能を利用してRESTful Web Serviceを開発した場合のアプリケーション構成を以下に示す。</p>
+<img alt="https://terasolunaorg.github.io/guideline/current/ja/_images/RESTOverviewApplicationConstitutionOnSpringMVC.png" src="https://terasolunaorg.github.io/guideline/current/ja/_images/RESTOverviewApplicationConstitutionOnSpringMVC.png" />
+<div class="section" id="domainresource">
+<h3>DomainオブジェクトとResourceオブジェクトを分ける意義<a class="headerlink" href="#domainresource" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>チュートリアルを実施していて、DomainオブジェクトクラスとResourceクオブジェクトを分ける意義について参考になったので、
+ドキュメントの記述を引用する。平たく言うとアプリケーション層とドメイン層のロジックを分離し、保守性を高めるため。</p>
+<blockquote>
+<div><p>Domainオブジェクトはビジネスを行う上で必要な資源や、ビジネスを行っていく過程で発生するものを表現する。
+Resourceオブジェクトはクライアントとの入出力で使用するUI上の情報を表現する。</p>
+<p>両者を混同するとアプリケーション層の影響がドメイン層におよび、保守性を低下させる原因となる。
+DomainObjectとResourceクラスは別々に作成し、Dozer等のBeanMapperを利用してデータ変換を行うことを推奨する。</p>
+</div></blockquote>
+</div>
+</div>
 </div>
 
 
@@ -103,7 +133,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2022, tm-hack.
-      <span class="lastupdated">最終更新: 2022-04-17
+      <span class="lastupdated">最終更新: 2022-04-18
       </span></p>
   </div>
 

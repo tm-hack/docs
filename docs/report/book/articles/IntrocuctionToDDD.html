@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="ja" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ドメイン駆動設計入門 &mdash; tm-hack  ドキュメント</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="検索" href="../../../search.html" />
+    <link rel="next" title="Seminar Report" href="../../seminar/index.html" />
+    <link rel="prev" title="ソフトウェアアーキテクチャの基礎" href="FundermentalsOfSoftwareArchitecture.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> tm-hack
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../beginner/index.html">初心者の館</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../theme/index.html">テーマ検証</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Book Report</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="FundermentalsOfSoftwareArchitecture.html">ソフトウェアアーキテクチャの基礎</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ドメイン駆動設計入門</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">概要</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">要約</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">1章 ドメイン駆動設計とは</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">2章 システム固有の値を表現する「値オブジェクト」</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">3章 ライフサイクルのあるオブジェクト「エンティティ」</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">4章 不自然さを解決する「ドメインサービス」</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">5章 データにまつわる処理を分割する「リポジトリ」</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">6章 ユースケースを実現する「アプリケーションサービス」</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">7章 柔軟性をもたらす依存関係のコントロール</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">8章 ソフトウェアシステムを組み立てる</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">9章 複雑な生成処理を行う「ファクトリ」</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">10章 データの整合性を保つ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">11章 アプリケーションを1から組み立てる</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">12章 ドメインのルールを守る「集約」</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">13章 複雑な条件を表現する「仕様」</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">14章 アーキテクチャ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">15章 ドメイン駆動設計のとびらを開こう</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">まとめ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">次に学んでみたいテーマ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../seminar/index.html">Seminar Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workplace/debug/index.html">Debugメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workplace/tools/index.html">ツール類に関するメモ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">tm-hack</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Book Report</a> &raquo;</li>
+      <li>ドメイン駆動設計入門</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/report/book/articles/IntrocuctionToDDD.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="id1">
+<h1>ドメイン駆動設計入門<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p><a class="reference external" href="www.amazon.co.jp/dp/B082WXZVPC">ドメイン駆動設計入門（ボトムアップでわかる！ドメイン駆動設計の基本）</a> について読んだので要約と感想をまとめる。
+著者は成瀬允宣氏。『エリック・エヴァンスのドメイン駆動設計』を読むにあたって、ドメイン駆動設計の概要について知っておきたいと考え手に取った。</p>
+<div class="section" id="id3">
+<h2>概要<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>ドメイン駆動設計の理解に必要な前提知識と実装パターンを網羅的に学習できる。
+ドメイン駆動設計を学習する上で登場する用語は大別すると２種類に分かれる。
+モデリングに関する用語とパターンに関する用語である。</p>
+<p>本書では、モデリングについてはいったん棚上げにして具体的なコードをベースにパターンを集中的に解説し、全体を通して最終的なコードを提示する。
+ドメイン駆動設計はテーマとして大きく難解である。パターンに関する理解を通して、モデリングを含めたドメイン駆動設計の全貌を把握する一助とする。</p>
+</div>
+<div class="section" id="id4">
+<h2>要約<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id5">
+<h3>1章 ドメイン駆動設計とは<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>メモを残す。</p>
+</div>
+<div class="section" id="id6">
+<h3>2章 システム固有の値を表現する「値オブジェクト」<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>メモを残す。</p>
+</div>
+<div class="section" id="id7">
+<h3>3章 ライフサイクルのあるオブジェクト「エンティティ」<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>メモを残す。</p>
+</div>
+<div class="section" id="id8">
+<h3>4章 不自然さを解決する「ドメインサービス」<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>メモを残す。</p>
+</div>
+<div class="section" id="id9">
+<h3>5章 データにまつわる処理を分割する「リポジトリ」<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>メモを残す。</p>
+</div>
+<div class="section" id="id10">
+<h3>6章 ユースケースを実現する「アプリケーションサービス」<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>メモを残す。</p>
+</div>
+<div class="section" id="id11">
+<h3>7章 柔軟性をもたらす依存関係のコントロール<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>メモを残す。</p>
+</div>
+<div class="section" id="id12">
+<h3>8章 ソフトウェアシステムを組み立てる<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>メモを残す。</p>
+</div>
+<div class="section" id="id13">
+<h3>9章 複雑な生成処理を行う「ファクトリ」<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>メモを残す。</p>
+</div>
+<div class="section" id="id14">
+<h3>10章 データの整合性を保つ<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>メモを残す。</p>
+</div>
+<div class="section" id="id15">
+<h3>11章 アプリケーションを1から組み立てる<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>メモを残す。</p>
+</div>
+<div class="section" id="id16">
+<h3>12章 ドメインのルールを守る「集約」<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>メモを残す。</p>
+</div>
+<div class="section" id="id17">
+<h3>13章 複雑な条件を表現する「仕様」<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>メモを残す。</p>
+</div>
+<div class="section" id="id18">
+<h3>14章 アーキテクチャ<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>メモを残す。</p>
+</div>
+<div class="section" id="id19">
+<h3>15章 ドメイン駆動設計のとびらを開こう<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>メモを残す。</p>
+</div>
+</div>
+<div class="section" id="id20">
+<h2>まとめ<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</div>
+<div class="section" id="id21">
+<h2>次に学んでみたいテーマ<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="FundermentalsOfSoftwareArchitecture.html" class="btn btn-neutral float-left" title="ソフトウェアアーキテクチャの基礎" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../seminar/index.html" class="btn btn-neutral float-right" title="Seminar Report" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, tm-hack.
+      <span class="lastupdated">最終更新: 2022-04-18
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

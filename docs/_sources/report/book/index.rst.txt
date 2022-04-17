@@ -6,4 +6,5 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   oreilly/deroptyusAccipitrinus.rst
+   articles/FundermentalsOfSoftwareArchitecture.rst
+   articles/IntrocuctionToDDD.rst
