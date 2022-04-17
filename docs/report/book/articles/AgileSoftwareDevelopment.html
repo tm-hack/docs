@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="ja" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>アジャイルソフトウェア開発の奥義 &mdash; tm-hack  ドキュメント</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="検索" href="../../../search.html" />
+    <link rel="next" title="ソフトウェアアーキテクチャの基礎" href="FundermentalsOfSoftwareArchitecture.html" />
+    <link rel="prev" title="Book Report" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> tm-hack
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../beginner/index.html">初心者の館</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../theme/index.html">テーマ検証</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Book Report</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">アジャイルソフトウェア開発の奥義</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">概要</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">要約</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">1章 アジャイルプラクティス</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">2章 エクストリームプログラミングの概要</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">3章 プランニング</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">4章 テスティング</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">5章 リファクタリング</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">6章 プログラミングエピソード</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">まとめ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">次に学んでみたいテーマ、メモ</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="FundermentalsOfSoftwareArchitecture.html">ソフトウェアアーキテクチャの基礎</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntrocuctionToDDD.html">ドメイン駆動設計入門</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../seminar/index.html">Seminar Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workplace/debug/index.html">Debugメモ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../workplace/tools/index.html">ツール類に関するメモ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">tm-hack</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Book Report</a> &raquo;</li>
+      <li>アジャイルソフトウェア開発の奥義</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/report/book/articles/AgileSoftwareDevelopment.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="id1">
+<h1>アジャイルソフトウェア開発の奥義<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p><a class="reference external" href="www.amazon.co.jp/dp/4797347783">アジャイルソフトウェア開発の奥義</a> について読んだので要約と感想をまとめる。</p>
+<p>原著はRobert C.MartinのAgile Software Development(Principles, Patterns, and Practice)である。</p>
+<div class="section" id="id3">
+<h2>概要<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>ソフトウェア開発の原則、デザインパターン、そしてプラクティスというソフトウェア開発において重要な３つの要素について、アジャイル開発という見地から述べた書籍である。
+ソースコードや実際の開発に基づく対話、ケーススタディ等がふんだんに盛り込まれており、知識だけでなくノウハウとして理解できる１冊である。</p>
+</div>
+<div class="section" id="id4">
+<h2>要約<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id5">
+<h3>1章 アジャイルプラクティス<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>アジャイル開発がもたらす4つの価値と12の原則について説明している。</p>
+<p>全体を通して面白いのは「顧客」というキーワードが頻出すること。
+開発者の提言だからソフトウェアに関わることに閉じた話だと思いだが、
+プロジェクトのコストや納期、システムの仕様を予め定めるのは無理だという前提に立てば、
+契約ではなく協調（協調関係を築くための契約は必要）が重要になる。</p>
+<blockquote>
+<div><p>最優先事項は顧客を満足させることであり、価値あるソフトウェアを早い段階から継続的に届けることでこれを実現する。</p>
+<p>要求変更を歓迎し、たとえ開発過程の後半であってもそれ受け入れる。アジャイルプロセスは変化に対応することで顧客の競争上の優位性を確保する。</p>
+</div></blockquote>
+<p>技術や設計に対する配慮は顧客のニーズを迅速に満たすために適用する、という考え方も勉強になる。
+場面場面では局所的な課題に囚われがちだが、本質的に今のプロセスが適切なのか評価するためには、こういった大方針はとても大事だと感じる。
+だからこそいきなり抽象化に向かうのではなく、とりあえず仕様を満たすソフトウェアを開発するという考え方も納得。（YAGNI原則）</p>
+<blockquote>
+<div>高度な技術と優れた設計への配慮は、アジャイル性を高める</div></blockquote>
+</div>
+<div class="section" id="id6">
+<h3>2章 エクストリームプログラミングの概要<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>具体的にアジャイル開発を行うための実践法がかなり具体的に書かれている。
+実践論的な話は聞いたことがあったので既知の話が多かったが、個人的に勉強になったのはメタファーに関する話。</p>
+<p>実現したいシステムのふるまいを現実の仕事（ゴミ収集車やトースターなど）に見立てて動きを説明することで、各クラスの役割を理解できる。
+これはアジャイル開発だけではなく、クラス設計全般に適用できる考え方だと思った。（抽象化が難しいが、、、）</p>
+</div>
+<div class="section" id="id7">
+<h3>3章 プランニング<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>ビジネス側が出した各機能の重要度に応じて、開発者側はその機能を組み込むためのコストを見積もることをプランニングと呼んでいるが、この章ではこのプランニングの具体的な実践法を説明している。</p>
+<p>イテレーションを繰り返すことで各開発チームの速度（イテレーションあたりのストーリーとタスクの消化数）を計測できるという点が面白かった。
+現場では、過去のプロジェクトからソースコードの生産性を導出しそれにリスクを掛けることで見積もりを行うが、
+プロジェクトの難易度は実際に始まってみないと分からないことも多々あり、また開発当初はどこがボトルネックになるのかもなかなか分からない。</p>
+<p>一方、この方法ではイテレーションが短期間（2週間）であり、同じメンバーかつ各プロジェクトに閉じた範囲で速度（≒生産性）を計算できるので、尺度としても妥当性があると思う。</p>
+</div>
+<div class="section" id="id8">
+<h3>4章 テスティング<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>プログラムを設計する前にテストを設計する利点を説明している。
+テストを先に書くことでユニットテストであればモジュールの独立（関心の分離）につながり、
+受入テストであればユーザインターフェースへの関に繋がるという点が面白かった。</p>
+<p>テストは動作検証に過ぎない（設計で記した仕様が漏れなくソースコードに反映されているか、の確認）という認識だったが、
+テストケースを検討し、実際にテストコードを書くことでアーキテクチャと設計の改善に繋がるとは新しい発見だった。</p>
+</div>
+<div class="section" id="id9">
+<h3>5章 リファクタリング<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>リファクタリングの流れを対話形式で説明している。
+個人的には以下の比喩が好きである。</p>
+<blockquote>
+<div>&quot;リファクタリングは食後のキッチンを片付けるようなものだ。
+最後は後片付けをしなければ、それだけ食事時間は短くて済む。
+しかし、片づけておかないと、翌日の食事の準備をするときにもっと時間がかかってしまう。
+そこで、また片づけをしたくなくなる。実際片づけをしなければその日の食事は早く済ませることができる。
+しかしキッチンはどんどん汚くなっていく。
+ついには、必要な調理用具を探すだけでとんでもない時間を費やすことになってしまうだろう。&quot;</div></blockquote>
+</div>
+<div class="section" id="id10">
+<h3>6章 プログラミングエピソード<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>ボウリングのスコアを集計するアプリを題材にXPプログラミングのプラクティスをデモンストレートしている。
+実際に手元でコードを起こしながら文章を追ってみたけど、想定するテストケースを手元で検証しながら開発を進めていけるのは新鮮だった。
+テストが瞬時に行えるおかげでリファクタリングへのハードルが低減されるので、保守性の高いコードを書くモチベーションに繋がると思う。
+ただ、このやり方だと、どうしても対象のコードが逐次追加になるので、柔軟性を保つために設計原則を頭に入れて開発を進めていくのはマストだと思う。</p>
+<p>また、こうやってリファクタリングしていく過程を書いてくれる書籍は初めてだったので、抽象化の考え方やトップダウンアプローチでのリファクタリングなどとても勉強になった。
+関係ないがテストコードのJunitのバージョンは4のよう。バージョン5で試そうとしたけど上手くいかなかった。</p>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>まとめ<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</div>
+<div class="section" id="id12">
+<h2>次に学んでみたいテーマ、メモ<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>イテレーションで逐次機能追加していく中でカオスを防ぎ、どうやって全体の整合性を高めるのか？</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Book Report" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="FundermentalsOfSoftwareArchitecture.html" class="btn btn-neutral float-right" title="ソフトウェアアーキテクチャの基礎" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, tm-hack.
+      <span class="lastupdated">最終更新: 2022-04-18
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
