@@ -44,7 +44,11 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Debugメモ</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">SpringのDebugメモ</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#talend-api-tester">Talend API Tester</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#java-lang-illegalargumentexception">java.lang.IllegalArgumentException</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#http-0xxxxxxxxx">HTTP メソッド名 [0xxxxxxxxx] に無効な文字が含まれています、とエラーを出力する</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#intelij">InteliJ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mapper-xmlcould-not-autowire">Mapper XMLファイルが読み込まれず、「Could not autowire.」とエラーを出力する</a></li>
 </ul>
 </li>
 </ul>
@@ -85,10 +89,10 @@
 <p>本章ではSpring環境の構築およびアプリケーション開発時に詰まった内容を備忘録として残す。</p>
 <div class="section" id="talend-api-tester">
 <h2>Talend API Tester<a class="headerlink" href="#talend-api-tester" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="java-lang-illegalargumentexception">
-<h3>java.lang.IllegalArgumentException<a class="headerlink" href="#java-lang-illegalargumentexception" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="section" id="http-0xxxxxxxxx">
-<h4>HTTP メソッド名 [0xxxxxxxxx] に無効な文字が含まれています。<a class="headerlink" href="#http-0xxxxxxxxx" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<h3>HTTP メソッド名 [0xxxxxxxxx] に無効な文字が含まれています、とエラーを出力する<a class="headerlink" href="#http-0xxxxxxxxx" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id1">
+<h4>事象および原因<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h4>
 <div class="highlight-console notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="go">java.lang.IllegalArgumentException: HTTP メソッド名[0x160x030x010x020x000x010x000x010xfc0x030x</span>
@@ -96,8 +100,32 @@
 <span class="go">70xb80xbe8 ] に無効な文字が含まれています。HTTP メソッド名は決められたトークンでなければなりません。</span>
 </pre></div>
 </td></tr></table></div>
-<p>httpメソッドでの通信を開放している場合に、httpsでリクエストを投げている可能性がある。
-Talend API Testerのプロトコルがhttpになっていることを確認する。</p>
+<p>httpメソッドでの通信を開放している場合に、httpsでリクエストを投げている可能性がある。</p>
+</div>
+<div class="section" id="id2">
+<h4>対処内容<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p>Talend API Testerのプロトコルがhttpになっていることを確認する。
+httpsになっていればhttpに変更する。</p>
+</div>
+</div>
+</div>
+<div class="section" id="intelij">
+<h2>InteliJ<a class="headerlink" href="#intelij" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="mapper-xmlcould-not-autowire">
+<h3>Mapper XMLファイルが読み込まれず、「Could not autowire.」とエラーを出力する<a class="headerlink" href="#mapper-xmlcould-not-autowire" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id3">
+<h4>事象および原因<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<div class="highlight-console notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="go">Could not autowire. No beans of &#39;AccountRepository&#39; type found.</span>
+</pre></div>
+</td></tr></table></div>
+<p>resources配下にMapper XMLファイルを作成して、MyBatisよりRepositoryを自動出力している場合に「Could not autowire.」とエラーを出力する。
+ただ、アプリケーションを実行すると正常に動作する。</p>
+<p>原因は、MyBatisを用いてRepositoryを作成する場合、IDEの静的解析では実体クラスが作成されておらずIDEが実体クラスを検知できないため。</p>
+</div>
+<div class="section" id="id4">
+<h4>対処内容<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p>（2022/04/17 検証中）
+対象のRepositoryインタフェースに&#64;Repositoryアノテーションを付与することで、エラーを回避できる。</p>
 </div>
 </div>
 </div>
@@ -115,7 +143,7 @@ Talend API Testerのプロトコルがhttpになっていることを確認す�
 
   <div role="contentinfo">
     <p>&#169; Copyright 2022, tm-hack.
-      <span class="lastupdated">最終更新: 2022-04-14
+      <span class="lastupdated">最終更新: 2022-04-17
       </span></p>
   </div>
 
