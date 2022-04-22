@@ -46,8 +46,12 @@ Spring Bootアプリケーションを実行する。
 
 validationの有効化
 --------------------
-resourceに@NotNullなどのvalidationを付与する場合は、
+resourceに@NotEmptyなどのvalidationを付与する場合は、
 pom.xmlに以下のbean定義を追加する必要がある。
+
+なお、@NotEmptyはjavax.validation.constraintsをimportすることで利用可能になるため、
+hibernate-validatorとの関連はないと思われる。
+なぜ、hibernate-validatorをインストールしないとjavax.validation.constraintsがimportできないのかは不明である。
 
 .. sourcecode:: xml
    :linenos:
