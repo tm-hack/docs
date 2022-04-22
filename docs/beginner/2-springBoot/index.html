@@ -38,7 +38,18 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../1-terasoulna/index.html">TERASOLUNA</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">SpringBoot</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SpringBoot</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">前提事項</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spring-boot">Spring Bootの概要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#springspringboot">SpringとSpringBootの違い</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">プロジェクトの初期化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Spring Bootのコマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">チュートリアルとの相違</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#validation">validationの有効化</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../3-cna_basic/index.html">CNA（basic）</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../4-cicd/index.html">CI/CD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../5-cna_app/index.html">CNA（advanced）</a></li>
@@ -76,7 +87,57 @@
              
   <div class="section" id="springboot">
 <h1>SpringBoot<a class="headerlink" href="#springboot" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>本章ではSpringBootのチュートリアル時の作業メモを残す。</p>
+<p>本章ではSpringBootのチュートリアル時の作業メモを残す。
+実施したチュートリアルは2019-12-27に策定されたものである。</p>
+<div class="section" id="id1">
+<h2>前提事項<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>検証環境</p>
+<ul class="simple">
+<li>Windows11</li>
+<li>JDK 17</li>
+<li>Spring Boot 2.6.7</li>
+</ul>
+<p>注意事項</p>
+<ul class="simple">
+<li>dozer-spring-boot-starterについては依存関係が解決できないため導入しない</li>
+</ul>
+</div>
+<div class="section" id="spring-boot">
+<h2>Spring Bootの概要<a class="headerlink" href="#spring-boot" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</div>
+<div class="section" id="springspringboot">
+<h2>SpringとSpringBootの違い<a class="headerlink" href="#springspringboot" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</div>
+<div class="section" id="id2">
+<h2>プロジェクトの初期化<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Spring initializrに必要項目を入力して、generateボタンを押下すると、
+zip形式のプロジェクトファイルがダウンロードできる。</p>
+<p><a class="reference external" href="https://start.spring.io/">https://start.spring.io/</a></p>
+</div>
+<div class="section" id="id3">
+<h2>Spring Bootのコマンド<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Spring Bootアプリケーションを実行する。</p>
+<div class="highlight-bash notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>mvn spring-boot:run
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="id4">
+<h2>チュートリアルとの相違<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="validation">
+<h3>validationの有効化<a class="headerlink" href="#validation" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>resourceに&#64;NotNullなどのvalidationを付与する場合は、
+pom.xmlに以下のbean定義を追加する必要がある。</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;dependency&gt;</span>
+   <span class="nt">&lt;groupId&gt;</span>org.hibernate.validator<span class="nt">&lt;/groupId&gt;</span>
+   <span class="nt">&lt;artifactId&gt;</span>hibernate-validator<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
 </div>
 
 
@@ -91,7 +152,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2022, tm-hack.
-      <span class="lastupdated">最終更新: 2022-04-18
+      <span class="lastupdated">最終更新: 2022-04-22
       </span></p>
   </div>
 
