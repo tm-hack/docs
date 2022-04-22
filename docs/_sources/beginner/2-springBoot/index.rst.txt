@@ -41,7 +41,7 @@ Spring Bootアプリケーションを実行する。
    mvn spring-boot:run
 
 
-チュートリアルとの相違
+デバッグメモ
 ======================
 
 validationの有効化
