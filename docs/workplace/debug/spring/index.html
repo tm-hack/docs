@@ -56,6 +56,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#mapper-xmlcould-not-autowire">Mapper XMLファイルが読み込まれず、「Could not autowire.」とエラーを出力する</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#springboot">SpringBoot</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#validation">validationの有効化</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../aws/index.html">AWSのDebugメモ</a></li>
@@ -134,6 +138,26 @@ httpsになっていればhttpに変更する。</p>
 </div>
 </div>
 </div>
+<div class="section" id="springboot">
+<h2>SpringBoot<a class="headerlink" href="#springboot" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="validation">
+<h3>validationの有効化<a class="headerlink" href="#validation" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>resourceに&#64;NotEmptyなどのvalidationを付与する場合は、
+pom.xmlに以下のbean定義を追加する必要がある。</p>
+<p>なお、&#64;NotEmptyはjavax.validation.constraintsをimportすることで利用可能になるため、
+hibernate-validatorとの関連はないと思われる。
+なぜ、hibernate-validatorをインストールしないとjavax.validation.constraintsがimportできないのかは不明である。</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;dependency&gt;</span>
+   <span class="nt">&lt;groupId&gt;</span>org.hibernate.validator<span class="nt">&lt;/groupId&gt;</span>
+   <span class="nt">&lt;artifactId&gt;</span>hibernate-validator<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
 </div>
 
 
@@ -148,7 +172,7 @@ httpsになっていればhttpに変更する。</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2022, tm-hack.
-      <span class="lastupdated">最終更新: 2022-04-22
+      <span class="lastupdated">最終更新: 2022-05-07
       </span></p>
   </div>
 

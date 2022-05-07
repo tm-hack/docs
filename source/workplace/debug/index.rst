@@ -8,4 +8,3 @@ Contents:
 
    spring/index.rst
    aws/index.rst
-   myBatis/index.rst

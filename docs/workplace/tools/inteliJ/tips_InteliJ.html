@@ -52,6 +52,8 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">InteliJのTips</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#intelij">コマンドラインからInteliJのプロジェクトを開く</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tomcat">実行構成にtomcatを追加する</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#system-out">System.outを省略して打つ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mapper-xmlcould-not-autowire">Mapper XMLファイルが読み込まれず、「Could not autowire.」とエラーを出力する</a></li>
 </ul>
 </li>
 </ul>
@@ -143,6 +145,21 @@
 </div></blockquote>
 </div>
 </div>
+<div class="section" id="system-out">
+<h2>System.outを省略して打つ<a class="headerlink" href="#system-out" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>「sout」と打てばSystem.outが出力できる。</p>
+</div>
+<div class="section" id="mapper-xmlcould-not-autowire">
+<h2>Mapper XMLファイルが読み込まれず、「Could not autowire.」とエラーを出力する<a class="headerlink" href="#mapper-xmlcould-not-autowire" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="highlight-console notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="go">Could not autowire. No beans of &#39;AccountRepository&#39; type found.</span>
+</pre></div>
+</td></tr></table></div>
+<p>resources配下にMapper XMLファイルを作成して、MyBatisよりRepositoryを自動出力している場合に「Could not autowire.」とエラーを出力する。
+ただ、アプリケーションを実行すると正常に動作する。</p>
+<p>原因は、MyBatisを用いてRepositoryを作成する場合、IDEの静的解析では実体クラスが作成されておらずIDEが実体クラスを検知できないため。</p>
+<p>（2022/04/17 検証中）
+対象のRepositoryインタフェースに&#64;Repositoryアノテーションを付与することで、エラーを回避できる。</p>
+</div>
 </div>
 
 
@@ -157,7 +174,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2022, tm-hack.
-      <span class="lastupdated">最終更新: 2022-04-22
+      <span class="lastupdated">最終更新: 2022-05-07
       </span></p>
   </div>
 
