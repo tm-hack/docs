@@ -464,15 +464,23 @@ protocol versionにHTTP2を指定して作成したところ、ALBの候補に�
 <li>HTMLを返すWebアプリケーション(projectName: bff)</li>
 </ul>
 <p>記事と上記のリポジトリを参照して、backendとbffにそれぞれ以下のdependencyを追加した。</p>
-<p>a. backend
-* spring web(記事にはないがリポジトリに記載があるため追加)
-* Lombok(記事にはないがリポジトリに記載があるため追加)
-* spring-boot-configuration-processor</p>
-<p>b. bff
-* Lombok(記事にはないがリポジトリに記載があるため追加)
-* spring-boot-configuration-processor
-* Thymeleaf
-* spring-boot-maven-plugin</p>
+<ol class="loweralpha simple">
+<li>backend</li>
+</ol>
+<ul class="simple">
+<li>spring web(記事にはないがリポジトリに記載があるため追加)</li>
+<li>Lombok(記事にはないがリポジトリに記載があるため追加)</li>
+<li>spring-boot-configuration-processor</li>
+</ul>
+<ol class="loweralpha simple" start="2">
+<li>bff</li>
+</ol>
+<ul class="simple">
+<li>Lombok(記事にはないがリポジトリに記載があるため追加)</li>
+<li>spring-boot-configuration-processor</li>
+<li>Thymeleaf</li>
+<li>spring-boot-maven-plugin</li>
+</ul>
 <p>main配下のディレクトリ構成については上記のリポジトリを参考にそれぞれ以下の構成とした。</p>
 </div>
 </div>

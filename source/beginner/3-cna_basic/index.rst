@@ -181,11 +181,13 @@ SpringBootアプリケーションをECSに配置するにあたり、
 記事と上記のリポジトリを参照して、backendとbffにそれぞれ以下のdependencyを追加した。
 
 a. backend
+
 * spring web(記事にはないがリポジトリに記載があるため追加)
 * Lombok(記事にはないがリポジトリに記載があるため追加)
 * spring-boot-configuration-processor
 
 b. bff
+
 * Lombok(記事にはないがリポジトリに記載があるため追加)
 * spring-boot-configuration-processor
 * Thymeleaf
