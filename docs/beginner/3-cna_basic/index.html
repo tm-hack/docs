@@ -53,33 +53,35 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#spring">ステップ3：Springを使用したコンテナアプリケーションの実装方法</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id9">用語整理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">作業内容</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">メモ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">作業内容</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id11">プロジェクトのセットアップ</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">メモ</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#dockerdockerhub">ステップ4：Dockerコンテナの作成・DockerHubへのプッシュ</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id12">用語整理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">作業内容</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">メモ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">用語整理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">作業内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">メモ</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#ecs">ステップ5：ECSクラスタの作成</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id15">用語整理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">作業内容</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">メモ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">用語整理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">作業内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">メモ</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id18">ステップ6：ECSタスクの定義</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id19">用語整理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">作業内容</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">メモ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id19">ステップ6：ECSタスクの定義</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id20">用語整理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">作業内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">メモ</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id22">ステップ7：ECSサービスの実行</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id23">用語整理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id24">作業内容</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id25">メモ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id23">ステップ7：ECSサービスの実行</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id24">用語整理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">作業内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">メモ</a></li>
 </ul>
 </li>
 </ul>
@@ -441,62 +443,89 @@ protocol versionにHTTP2を指定して作成したところ、ALBの候補に�
 </div>
 <div class="section" id="spring">
 <h2>ステップ3：Springを使用したコンテナアプリケーションの実装方法<a class="headerlink" href="#spring" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>SpringBootアプリケーションをECSに配置するにあたり、</p>
+<ol class="arabic simple">
+<li>SpringBootを使ってExcutableJar実行形式のJavaアプリケーションを作成する</li>
+<li>コンテナにアプリケーションを配置する</li>
+</ol>
+<p>という流れをとる。こうすることで、簡易にコンテナ上でアプリケーションを実行できる。</p>
 <div class="section" id="id9">
-<h3>用語整理<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
-</div>
-<div class="section" id="id10">
-<h3>作業内容<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
-</div>
+<h3>作業内容<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>記事の内容のみだと実装を進めていくことが難しいので、
+必要に応じて
+<a class="reference external" href="https://github.com/debugroom/mynavi-sample-aws-ecs">川畑さんのリポジトリ</a>
+を参照して進めていく。</p>
 <div class="section" id="id11">
-<h3>メモ<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h4>プロジェクトのセットアップ<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<p>以下の2つのプロジェクトをセットアップした。
+セットアップについてはSpringInitializerのホームぺージに行かなくてもInteliJの新規プロジェクトから選択可能。</p>
+<ul class="simple">
+<li>単純なAPIを持つアプリケーション(projectName: backend)</li>
+<li>HTMLを返すWebアプリケーション(projectName: bff)</li>
+</ul>
+<p>記事と上記のリポジトリを参照して、backendとbffにそれぞれ以下のdependencyを追加した。</p>
+<p>a. backend
+* spring web(記事にはないがリポジトリに記載があるため追加)
+* Lombok(記事にはないがリポジトリに記載があるため追加)
+* spring-boot-configuration-processor</p>
+<p>b. bff
+* Lombok(記事にはないがリポジトリに記載があるため追加)
+* spring-boot-configuration-processor
+* Thymeleaf
+* spring-boot-maven-plugin</p>
+<p>main配下のディレクトリ構成については上記のリポジトリを参考にそれぞれ以下の構成とした。</p>
+</div>
+</div>
+<div class="section" id="id12">
+<h3>メモ<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
 </div>
 </div>
 <div class="section" id="dockerdockerhub">
 <h2>ステップ4：Dockerコンテナの作成・DockerHubへのプッシュ<a class="headerlink" href="#dockerdockerhub" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id12">
-<h3>用語整理<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
-</div>
 <div class="section" id="id13">
-<h3>作業内容<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>用語整理<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
 </div>
 <div class="section" id="id14">
-<h3>メモ<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>作業内容<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id15">
+<h3>メモ<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
 </div>
 </div>
 <div class="section" id="ecs">
 <h2>ステップ5：ECSクラスタの作成<a class="headerlink" href="#ecs" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id15">
-<h3>用語整理<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
-</div>
 <div class="section" id="id16">
-<h3>作業内容<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>用語整理<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
 </div>
 <div class="section" id="id17">
-<h3>メモ<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
-</div>
+<h3>作業内容<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
 </div>
 <div class="section" id="id18">
-<h2>ステップ6：ECSタスクの定義<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id19">
-<h3>用語整理<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>メモ<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
 </div>
+</div>
+<div class="section" id="id19">
+<h2>ステップ6：ECSタスクの定義<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id20">
-<h3>作業内容<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>用語整理<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
 </div>
 <div class="section" id="id21">
-<h3>メモ<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
-</div>
+<h3>作業内容<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
 </div>
 <div class="section" id="id22">
-<h2>ステップ7：ECSサービスの実行<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id23">
-<h3>用語整理<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>メモ<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h3>
 </div>
+</div>
+<div class="section" id="id23">
+<h2>ステップ7：ECSサービスの実行<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id24">
-<h3>作業内容<a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>用語整理<a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">¶</a></h3>
 </div>
 <div class="section" id="id25">
-<h3>メモ<a class="headerlink" href="#id25" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>作業内容<a class="headerlink" href="#id25" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id26">
+<h3>メモ<a class="headerlink" href="#id26" title="このヘッドラインへのパーマリンク">¶</a></h3>
 </div>
 </div>
 </div>

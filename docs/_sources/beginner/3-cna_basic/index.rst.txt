@@ -150,14 +150,49 @@ protocol versionにHTTP2を指定して作成したところ、ALBの候補に�
 ----
 * コンテナアプリケーションの識別にはALBのパスルーティング機能を使ってコンテナアプリケーションを識別するため、ロードバランサーにはALBを指定する
 
+
 ステップ3：Springを使用したコンテナアプリケーションの実装方法
 =========================================================================
 
-用語整理
-----------
+SpringBootアプリケーションをECSに配置するにあたり、
+
+1. SpringBootを使ってExcutableJar実行形式のJavaアプリケーションを作成する
+2. コンテナにアプリケーションを配置する
+
+という流れをとる。こうすることで、簡易にコンテナ上でアプリケーションを実行できる。
 
 作業内容
 ---------
+
+記事の内容のみだと実装を進めていくことが難しいので、
+必要に応じて
+`川畑さんのリポジトリ <https://github.com/debugroom/mynavi-sample-aws-ecs>`_
+を参照して進めていく。
+
+プロジェクトのセットアップ
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+以下の2つのプロジェクトをセットアップした。
+セットアップについてはSpringInitializerのホームぺージに行かなくてもInteliJの新規プロジェクトから選択可能。
+
+* 単純なAPIを持つアプリケーション(projectName: backend)
+* HTMLを返すWebアプリケーション(projectName: bff)
+
+記事と上記のリポジトリを参照して、backendとbffにそれぞれ以下のdependencyを追加した。
+
+a. backend
+* spring web(記事にはないがリポジトリに記載があるため追加)
+* Lombok(記事にはないがリポジトリに記載があるため追加)
+* spring-boot-configuration-processor
+
+b. bff
+* Lombok(記事にはないがリポジトリに記載があるため追加)
+* spring-boot-configuration-processor
+* Thymeleaf
+* spring-boot-maven-plugin
+
+main配下のディレクトリ構成については上記のリポジトリを参考にそれぞれ以下の構成とした。
+
 
 メモ
 ------
