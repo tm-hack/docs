@@ -403,7 +403,7 @@
 <td>ma-masuda-public-alb-sg</td>
 <td>外部からのインターネットアクセスを可能とするため、インバウンドルールとしてIP4,IP6共にHTTPの全IPを許可</td>
 </tr>
-<tr class="row-odd"><td>プライベートロードバランサー</td>
+<tr class="row-odd"><td>プライベートセキュリティグループ</td>
 <td>ma-masuda-private-alb-sg</td>
 <td>内部のアクセスのみを可能とするため、インバウンドルールとしてVPC(10.2.34.0/24)からのアクセスのみを許可する</td>
 </tr>
@@ -426,7 +426,7 @@ protocol versionにHTTP2を指定して作成したところ、ALBの候補に�
 <tr class="row-even"><td>パブリックターゲットグループ</td>
 <td>ma-masuda-public-alb-tg</td>
 </tr>
-<tr class="row-odd"><td>プライベートロードバランサー</td>
+<tr class="row-odd"><td>プライベートターゲットグループ</td>
 <td>ma-masuda-private-alb-tg</td>
 </tr>
 </tbody>

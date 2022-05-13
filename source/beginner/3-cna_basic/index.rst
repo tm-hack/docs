@@ -132,7 +132,7 @@ CNA（basic）
 
   "区分","Name", "設定内容"
   "パブリックセキュリティグループ","ma-masuda-public-alb-sg", "外部からのインターネットアクセスを可能とするため、インバウンドルールとしてIP4,IP6共にHTTPの全IPを許可"
-  "プライベートロードバランサー","ma-masuda-private-alb-sg", "内部のアクセスのみを可能とするため、インバウンドルールとしてVPC(10.2.34.0/24)からのアクセスのみを許可する"
+  "プライベートセキュリティグループ","ma-masuda-private-alb-sg", "内部のアクセスのみを可能とするため、インバウンドルールとしてVPC(10.2.34.0/24)からのアクセスのみを許可する"
 
 ALBのターゲットグループには以下を作成した。
 protocol versionにHTTP2を指定して作成したところ、ALBの候補に表示されなかったため、HTTP1で作り直した。
@@ -144,7 +144,7 @@ protocol versionにHTTP2を指定して作成したところ、ALBの候補に�
 
   "区分","Name"
   "パブリックターゲットグループ","ma-masuda-public-alb-tg"
-  "プライベートロードバランサー","ma-masuda-private-alb-tg"
+  "プライベートターゲットグループ","ma-masuda-private-alb-tg"
 
 メモ
 ----
