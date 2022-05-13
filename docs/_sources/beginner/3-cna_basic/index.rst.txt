@@ -121,7 +121,7 @@ CNA（basic）
   :header-rows: 1
 
   "区分","Name"
-  "パブリックロードバランサー","ma-masuda-public-alb",
+  "パブリックロードバランサー","ma-masuda-public-alb"
   "プライベートロードバランサー","ma-masuda-private-alb"
 
 
@@ -182,13 +182,13 @@ SpringBootアプリケーションをECSに配置するにあたり、
 
 a. backend
 
-* spring web(記事にはないがリポジトリに記載があるため追加)
-* Lombok(記事にはないがリポジトリに記載があるため追加)
+* spring web
+* Lombok
 * spring-boot-configuration-processor
 
 b. bff
 
-* Lombok(記事にはないがリポジトリに記載があるため追加)
+* Lombok
 * spring-boot-configuration-processor
 * Thymeleaf
 * spring-boot-maven-plugin
