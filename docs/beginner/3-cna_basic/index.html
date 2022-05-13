@@ -46,12 +46,40 @@
 <li class="toctree-l3"><a class="reference internal" href="#id5">メモ</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#alb">ALBの作成</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id6">メモ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#alb">ステップ2: アプリケーションロードバランサ(ALB)の作成</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">用語整理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">作業内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">メモ</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#spring">Springを使用したコンテナアプリケーションの実装方法</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id7">メモ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spring">ステップ3：Springを使用したコンテナアプリケーションの実装方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">用語整理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">作業内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">メモ</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dockerdockerhub">ステップ4：Dockerコンテナの作成・DockerHubへのプッシュ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">用語整理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">作業内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">メモ</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ecs">ステップ5：ECSクラスタの作成</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id15">用語整理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">作業内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">メモ</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id18">ステップ6：ECSタスクの定義</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id19">用語整理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">作業内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">メモ</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id22">ステップ7：ECSサービスの実行</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id23">用語整理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">作業内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">メモ</a></li>
 </ul>
 </li>
 </ul>
@@ -267,27 +295,208 @@
 </div>
 </div>
 <div class="section" id="alb">
-<h2>ALBの作成<a class="headerlink" href="#alb" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>パブリックサブネットを構築してよいのか不明だったので、いったん飛ばす。</p>
+<h2>ステップ2: アプリケーションロードバランサ(ALB)の作成<a class="headerlink" href="#alb" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id6">
-<h3>メモ<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>用語整理<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">用語</th>
+<th class="head">意味</th>
+<th class="head">参考URL</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ELB(Elasstic Load Balancer)</td>
+<td>AWSが提供するロードバランサーのサービス名</td>
+<td><a class="reference external" href="https://aws.amazon.com/jp/elasticloadbalancing/features/#compare">https://aws.amazon.com/jp/elasticloadbalancing/features/#compare</a></td>
+</tr>
+<tr class="row-odd"><td>ALB(Application Load Balancer)</td>
+<td>HTTP, HTTPS, gRPCベースのルーティングを行える。L7スイッチが備える機能に相当する。</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>NATゲートウェイ</td>
+<td>NAT ゲートウェイは、ネットワークアドレス変換 (NAT) サービスです。NAT ゲートウェイを使用すると、プライベートサブネット内のインスタンスは VPC 外のサービスに接続できますが、外部サービスはそれらのインスタンスとの接続を開始できません。</td>
+<td><a class="reference external" href="https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-nat-gateway.html">https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/vpc-nat-gateway.html</a></td>
+</tr>
+<tr class="row-odd"><td>NLB(Netowork Load Balancer)</td>
+<td>TCP, UDP, TLSベースのルーティングを行える。L4スイッチが備える機能に相当する。</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>GLB(Gateway Load Balancer)</td>
+<td>IPベースのルーティングを行える。</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>CLB(Classic Load Balancer)</td>
+<td>1世代前のロードバランサーサービスになる。具備するサービスが劣る？（精査が必要）</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>セキュリティグループ</td>
+<td>セキュリティグループは、インスタンスの仮想ファイアウォールとして機能し、インバウンドトラフィックとアウトバウンドトラフィックをコントロールします。</td>
+<td><a class="reference external" href="https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ec2-security-groups.html">https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ec2-security-groups.html</a></td>
+</tr>
+<tr class="row-odd"><td>インバウンドルール</td>
+<td>インスタンスへの受信トラフィックをコントロールする</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>アウトバウンドルール</td>
+<td>インスタンスからの送信トラフィックをコントロールする</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>HTTP1</td>
+<td>1997年に策定され、現在まで広く用いられている歴史の長いプロトコル。多重リクエスト/レスポンス時のTCPの多重化など幾つかの欠点を抱えている。</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>HTTP2</td>
+<td>2015年5月に標準化され、現在では多くのWebサイトやWebアプリケーションがHTTP/2を利用している。1つのTCP接続で多重リクエスト/レスポンスを行えるなど、HTTP1の課題を解決したプロトコルになっている</td>
+<td><a class="reference external" href="https://qiita.com/mogamin3/items/7698ee3336c70a482843#%E3%83%90%E3%82%A4%E3%83%8A%E3%83%AA%E3%83%99%E3%83%BC%E3%82%B9">https://qiita.com/mogamin3/items/7698ee3336c70a482843#%E3%83%90%E3%82%A4%E3%83%8A%E3%83%AA%E3%83%99%E3%83%BC%E3%82%B9</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id7">
+<h3>作業内容<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><a class="reference external" href="https://ap-northeast-1.console.aws.amazon.com/ec2/v2/home?region=ap-northeast-1#LoadBalancers:sort=loadBalancerName">EC2のダッシュボード</a>
+からロードバランサーを指定して作成画面に入る。パブリック用とプライベート用の2種類のロードバランサーを作成する。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">区分</th>
+<th class="head">Name</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>パブリックロードバランサー</td>
+<td>ma-masuda-public-alb</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>プライベートロードバランサー</td>
+<td>ma-masuda-private-alb</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p>セキュリティグループには以下を作成した。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">区分</th>
+<th class="head">Name</th>
+<th class="head">設定内容</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>パブリックセキュリティグループ</td>
+<td>ma-masuda-public-alb-sg</td>
+<td>外部からのインターネットアクセスを可能とするため、インバウンドルールとしてIP4,IP6共にHTTPの全IPを許可</td>
+</tr>
+<tr class="row-odd"><td>プライベートロードバランサー</td>
+<td>ma-masuda-private-alb-sg</td>
+<td>内部のアクセスのみを可能とするため、インバウンドルールとしてVPC(10.2.34.0/24)からのアクセスのみを許可する</td>
+</tr>
+</tbody>
+</table>
+<p>ALBのターゲットグループには以下を作成した。
+protocol versionにHTTP2を指定して作成したところ、ALBの候補に表示されなかったため、HTTP1で作り直した。</p>
+<p>また、ヘルスチェック用のhtmlの名前はパブリックとプライベート両者ともに/backend-for-frontend/index.htmlとした。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">区分</th>
+<th class="head">Name</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>パブリックターゲットグループ</td>
+<td>ma-masuda-public-alb-tg</td>
+</tr>
+<tr class="row-odd"><td>プライベートロードバランサー</td>
+<td>ma-masuda-private-alb-tg</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id8">
+<h3>メモ<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ul class="simple">
-<li>AWSのロードバランサーはELB(Elasstic Load Balancer)というサービス名で提供されている。</li>
-<li>ELBには4種類の製品が提供されている。(<a class="reference external" href="https://aws.amazon.com/jp/elasticloadbalancing/features/#compare">https://aws.amazon.com/jp/elasticloadbalancing/features/#compare</a>)</li>
-<li>ALB(Application Load Balancer)はHTTP, HTTPS, gRPCベースのルーティングを行える。L7スイッチが備える機能に相当する。</li>
-<li>NLB(Netowork Load Balancer)はTCP, UDP, TLSベースのルーティングを行える。L4スイッチが備える機能に相当する。</li>
-<li>GLB(Gateway Load Balancer)はIPベースのルーティングを行える。</li>
-<li>CLB(Classic Load Balancer)は１世代前のロードバランサーサービスになる。具備するサービスが劣る？（精査が必要）</li>
+<li>コンテナアプリケーションの識別にはALBのパスルーティング機能を使ってコンテナアプリケーションを識別するため、ロードバランサーにはALBを指定する</li>
 </ul>
 </div>
 </div>
 <div class="section" id="spring">
-<h2>Springを使用したコンテナアプリケーションの実装方法<a class="headerlink" href="#spring" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id7">
-<h3>メモ<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
-<ul class="simple">
-<li>ECSを用いると単にDockerをEC2上で実行する場合に比べてクラスタのポート管理やコンテナ実行がAWSのマネージドサービスになるため、コンテナアプリケーション間のサービス連携はALBを介して行う方がよい（詳しく知りたい）</li>
-</ul>
+<h2>ステップ3：Springを使用したコンテナアプリケーションの実装方法<a class="headerlink" href="#spring" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id9">
+<h3>用語整理<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id10">
+<h3>作業内容<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id11">
+<h3>メモ<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+</div>
+<div class="section" id="dockerdockerhub">
+<h2>ステップ4：Dockerコンテナの作成・DockerHubへのプッシュ<a class="headerlink" href="#dockerdockerhub" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id12">
+<h3>用語整理<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id13">
+<h3>作業内容<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id14">
+<h3>メモ<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+</div>
+<div class="section" id="ecs">
+<h2>ステップ5：ECSクラスタの作成<a class="headerlink" href="#ecs" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id15">
+<h3>用語整理<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id16">
+<h3>作業内容<a class="headerlink" href="#id16" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id17">
+<h3>メモ<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id18">
+<h2>ステップ6：ECSタスクの定義<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id19">
+<h3>用語整理<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id20">
+<h3>作業内容<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id21">
+<h3>メモ<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id22">
+<h2>ステップ7：ECSサービスの実行<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id23">
+<h3>用語整理<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id24">
+<h3>作業内容<a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id25">
+<h3>メモ<a class="headerlink" href="#id25" title="このヘッドラインへのパーマリンク">¶</a></h3>
 </div>
 </div>
 </div>
