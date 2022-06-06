@@ -459,29 +459,23 @@ protocol versionにHTTP2を指定して作成したところ、ALBの候補に�
 <li>単純なAPIを持つアプリケーション(projectName: backend)</li>
 <li>HTMLを返すWebアプリケーション(projectName: bff)</li>
 </ul>
-<p>記事と上記のリポジトリを参照して、backendとbffにそれぞれ以下のdependencyを追加した。</p>
-<ol class="loweralpha simple">
-<li>backend</li>
-</ol>
-<ul class="simple">
-<li>spring web</li>
-<li>Lombok</li>
-<li>spring-boot-configuration-processor</li>
-</ul>
-<ol class="loweralpha simple" start="2">
-<li>bff</li>
-</ol>
-<ul class="simple">
-<li>Lombok</li>
-<li>spring-boot-configuration-processor</li>
-<li>Thymeleaf</li>
-<li>spring-boot-maven-plugin</li>
-</ul>
-<p>main配下のディレクトリ構成については上記のリポジトリを参考にそれぞれ以下の構成とした。</p>
+<p>なお、dnsnameにはhttp://internal-ma-masuda-private-alb-592620197.ap-northeast-1.elb.amazonaws.comを設定した。</p>
 </div>
 </div>
 <div class="section" id="id12">
 <h3>メモ<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li>backendアプリケーションのapplication.ymlにserver.servlet.context-pathプロパティを設定することで、ALBのパスベースのルーティングが設定できる</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>server:
+  servlet:
+    context-path: /backend
+</pre></div>
+</div>
+<ul class="simple">
+<li>bffアプリケーションのapplication.ymlにdnsを設定し、org.springframework.boot.context.properties.ConfigurationPropertiesでymlに定義したプロパティ定義を自動でBeanにインジェクションすることができる</li>
+<li>試験用には <a class="reference external" href="internal-ma-masuda-private-alb-592620197.ap-northeast-1.elb.amazonaws.com">Talented API</a> を使用した</li>
+</ul>
 </div>
 </div>
 <div class="section" id="dockerdockerhub">
@@ -546,7 +540,7 @@ protocol versionにHTTP2を指定して作成したところ、ALBの候補に�
 
   <div role="contentinfo">
     <p>&#169; Copyright 2022, tm-hack.
-      <span class="lastupdated">最終更新: 2022-05-13
+      <span class="lastupdated">最終更新: 2022-06-06
       </span></p>
   </div>
 

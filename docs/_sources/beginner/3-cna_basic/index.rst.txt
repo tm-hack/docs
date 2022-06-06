@@ -178,26 +178,21 @@ SpringBootアプリケーションをECSに配置するにあたり、
 * 単純なAPIを持つアプリケーション(projectName: backend)
 * HTMLを返すWebアプリケーション(projectName: bff)
 
-記事と上記のリポジトリを参照して、backendとbffにそれぞれ以下のdependencyを追加した。
-
-a. backend
-
-* spring web
-* Lombok
-* spring-boot-configuration-processor
-
-b. bff
-
-* Lombok
-* spring-boot-configuration-processor
-* Thymeleaf
-* spring-boot-maven-plugin
-
-main配下のディレクトリ構成については上記のリポジトリを参考にそれぞれ以下の構成とした。
-
+なお、dnsnameにはhttp://internal-ma-masuda-private-alb-592620197.ap-northeast-1.elb.amazonaws.comを設定した。
 
 メモ
 ------
+* backendアプリケーションのapplication.ymlにserver.servlet.context-pathプロパティを設定することで、ALBのパスベースのルーティングが設定できる
+
+.. sourcecode:: bash
+
+  server:
+    servlet:
+      context-path: /backend
+
+* bffアプリケーションのapplication.ymlにdnsを設定し、org.springframework.boot.context.properties.ConfigurationPropertiesでymlに定義したプロパティ定義を自動でBeanにインジェクションすることができる
+
+* 試験用には `Talented API <internal-ma-masuda-private-alb-592620197.ap-northeast-1.elb.amazonaws.com>`_ を使用した
 
 ステップ4：Dockerコンテナの作成・DockerHubへのプッシュ
 =========================================================================
